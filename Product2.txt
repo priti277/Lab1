@@ -1,0 +1,66 @@
+import java.util.*;
+class Product implements Comparable<Product> {
+  String ProductName;
+  int Pid;
+  int price;
+  Product(String pName,int pPrice,int pId){
+   ProductName= pName;
+    price= pPrice;
+    Pid = pId;
+  }
+   public void setProductName(String name){
+    this.ProductName=name;
+   }
+  
+   public String getProductName(){
+    return ProductName;
+   }
+
+   public void setPrice(int price){
+    this.price=price;
+   }
+  
+   public int getPrice(){
+    return price;
+   }
+   public int getId(){
+    return Pid;
+
+   }
+   public void setId(int id){
+    this.Pid =id;
+
+   }
+
+   
+   @Override
+   public int compareTo(Product o) {
+    
+       if(this.price > o.price){
+        return 1;
+       }else if(this.price == o.price) {
+        return 0;
+       }else{
+        return -1;
+        }
+      }
+    }
+
+   class main12{
+    public static void main(String[] args) {
+        List<Product> product= new ArrayList<>();
+        product.add(new Product("TV", 50000,101));
+        product.add(new Product("Headphone", 1000,102));
+        product.add(new Product("Shoes", 7000,103));
+        product.add(new Product("Laptop", 70000,104));
+
+        Collections.sort(product);
+
+        product.forEach(x -> System.out.println("Product ID:"+ x.getId()+x.getProductName()+" is priced at "+x.getPrice()));
+
+        
+    }
+     
+}
+    
+
