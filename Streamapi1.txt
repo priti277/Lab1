@@ -1,0 +1,60 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+class Person {
+    private String name;
+    private int age;
+    private String city;
+
+    
+    public Person(String name, int age, String city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+    }
+
+    
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", city='" + city + '\'' +
+                '}';
+    }
+}
+
+public class streamapi2 {
+    public static void main(String[] args) {
+        
+        List<Person> customers = new ArrayList<>();
+        customers.add(new Person("Priti", 22, "New York"));
+        customers.add(new Person("Priya", 16, "Los Angeles"));
+        customers.add(new Person("Nisha", 30, "Chicago"));
+        customers.add(new Person("Suraj", 25, "New York"));
+        customers.add(new Person("Kiran", 19, "San Francisco"));
+
+        
+        List<Person> filteredCustomers = customers.stream()
+                .filter(person -> person.getAge() > 18) 
+                .filter(person -> "New York".equals(person.getCity())) 
+                .collect(Collectors.toList()); 
+
+    
+        filteredCustomers.forEach(System.out::println);
+        
+    }
+}
